@@ -19,7 +19,6 @@ public class AccActivity extends AppCompatActivity implements SensorEventListene
     private TextView txtX, txtY, txtZ;
     private Button btnEsci;
 
-
     /* GESTIONE SENSORE */
     private SensorManager sensorManager; // Oggetto per gestione dei vari sensori
     private Sensor accelerometro; // Oggetto per gestione singolo sensore
@@ -38,7 +37,7 @@ public class AccActivity extends AppCompatActivity implements SensorEventListene
         btnEsci.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                sensorManager.unregisterListener(AccActivity.this, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER));
                 AccActivity.this.finish(); // Activity "stoppata" ma non "distrutta"
             }
         });
@@ -50,9 +49,7 @@ public class AccActivity extends AppCompatActivity implements SensorEventListene
         // Registrazione Listener per sensore specifico
         sensorManager.registerListener((SensorEventListener) this, accelerometro, SensorManager.SENSOR_DELAY_NORMAL);
         // il nostro sensore [accelerometro] ora è attivato, applicando un DELAY_NORMAL ci verranno restituiti dati ogni x secondi
-
     }
-
 
     // Per leggere i dati restituiti dal sensore implemento SensorEventListener all'interno della classe principale AccActivity
     // Questo mi costringe a gestire entrambi i metodi sottostanti [onSensorChanged e onAccuracyChanged]
@@ -67,6 +64,9 @@ public class AccActivity extends AppCompatActivity implements SensorEventListene
                     "Y: "  + event.values[1] +
                     "Z: " + event.values[2]
             );
+            txtX.setText(String.valueOf(event.values[0]));
+            txtY.setText(String.valueOf(event.values[1]));
+            txtZ.setText(String.valueOf(event.values[2]));
         }
     }
 

@@ -36,11 +36,11 @@
                 android:id="@+id/btnSaluta"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="@string/saluta"
                 android:background="@color/colorArancio"
+                android:text="@string/saluta"
                 android:textColor="@color/colorRosso"
-                android:textSize="38dp"
-                />
+                android:textSize="38dp" />
+
             <Button
                 android:id="@+id/btnAltobasso"
                 android:layout_width="match_parent"
@@ -69,6 +69,16 @@
                 android:textColor="@color/colorRosso"
                 android:textSize="38dp"
                 android:hint="@string/alto_basso"
+                />
+
+            <Button
+                android:id="@+id/btnTris"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="@string/tris"
+                android:background="@color/colorArancio"
+                android:textColor="@color/colorRosso"
+                android:textSize="38dp"
                 />
         </LinearLayout>
     </ScrollView>

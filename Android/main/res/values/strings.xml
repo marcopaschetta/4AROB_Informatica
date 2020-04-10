@@ -2,10 +2,11 @@
     <!-- MAIN ACTIVITY -->
     <string name="app_name">App_4AROB</string>
     <string name="titolo">Mia App</string>
-    <string name="saluta">Saluta</string>
+    <string name="saluta">Ciao</string>
     <string name="alto_basso">Alto&amp;Basso</string>
     <string name="accelerometro">Accelerometro</string>
     <string name="fotocamera">Fotocamera</string>
+    <string name="tris">Gioco del tris</string>
 
     <!-- ALTOBASSO ACTIVITY -->
     <string name="title_activity_altobasso">Alto&amp;Basso</string>
@@ -18,5 +19,7 @@
     <string name="sens_x">X</string>
     <string name="sens_y">Y</string>
     <string name="sens_z">Z</string>
-
+    <!-- TRIS ACTIVITY -->
+    <string name="btn_tris">-</string>
+    <string name="btn_reset">RESET GIOCO</string>
 </resources>

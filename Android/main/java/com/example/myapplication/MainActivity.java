@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private TextView txtSaluta;
     private Button btnSaluta, btnAltobasso, btnAccelerometro, btnFotocamera;
+    private Button btnGiocoTris;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         bindComponents();
         // Collego Listener per gestione eventi
         setupEventListener();
+
     }
     private void bindComponents(){
         txtSaluta = findViewById(R.id.lblTitolo);
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         btnAltobasso = findViewById(R.id.btnAltobasso);
         btnAccelerometro = findViewById(R.id.btnAccel);
         btnFotocamera = findViewById(R.id.btnFoto);
+        btnGiocoTris = findViewById(R.id.btnTris);
     }
     private void setupEventListener(){
         btnSaluta.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +59,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Intent intent = new Intent(MainActivity.this, FotoActivity.class);
                 // startActivity(intent);
+            }
+        });
+        btnGiocoTris.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intenzione;
+                intenzione = new Intent(MainActivity.this, TrisActivity.class);
+                intenzione.putExtra("g1", "Marco");
+                intenzione.putExtra("g2", "Luca");
+                startActivity(intenzione);
             }
         });
     }
