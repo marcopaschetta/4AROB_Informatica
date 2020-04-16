@@ -7,6 +7,7 @@
     <string name="accelerometro">Accelerometro</string>
     <string name="fotocamera">Fotocamera</string>
     <string name="tris">Gioco del tris</string>
+    <string name="forza4">Gioco del Forza4</string>
 
     <!-- ALTOBASSO ACTIVITY -->
     <string name="title_activity_altobasso">Alto&amp;Basso</string>
@@ -22,4 +23,8 @@
     <!-- TRIS ACTIVITY -->
     <string name="btn_tris">-</string>
     <string name="btn_reset">RESET GIOCO</string>
+    <!-- FORZA 4 ACTIVITY -->
+    <string name="forza4_vs">X VS Y</string>
+    <string name="forza4_reset">RIAVVIA PARTITA</string>
+
 </resources>

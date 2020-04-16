@@ -10,11 +10,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Random;
+
 public class TrisActivity extends AppCompatActivity {
     private static final String TAG = "TrisActivity";
 
 
     public int m[][]; // matrice interi
+    public int cont = 9;
     private boolean g1; // true o false
 
     private TextView lblTit;
@@ -24,6 +27,7 @@ public class TrisActivity extends AppCompatActivity {
     Button b20, b21, b22;
     // possibilità 2
     Button b[][];
+    Button btnReset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +70,22 @@ public class TrisActivity extends AppCompatActivity {
                 b[i][j].setOnClickListener(new myListener());
             }
         }
+
+        btnReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for(int i=0; i<3; i++){
+                    for(int j=0; j<3; j++){
+                        m[i][j] = 0; // resetto matrice
+                        //----------
+                        b[i][j].setEnabled(true);
+                        b[i][j].setBackgroundResource(R.color.colorAccent);
+                    }
+                }
+                cont = 9;
+                btnReset.setVisibility(View.GONE);
+            }
+        });
     }
     private void bindComponents(){
         lblTit = findViewById(R.id.lblTit);
@@ -92,9 +112,16 @@ public class TrisActivity extends AppCompatActivity {
         b[2][0] = findViewById(R.id.btn20); //b[2][0].setTransitionName("btn_2_0");
         b[2][1] = findViewById(R.id.btn21); //b[2][1].setTransitionName("btn_2_1");
         b[2][2] = findViewById(R.id.btn22); //b[2][2].setTransitionName("btn_2_2");
+
+        btnReset = findViewById(R.id.btnReset);
     }
     void vince(String g){
         Toast.makeText(this, g, Toast.LENGTH_LONG).show();
+        btnReset.setVisibility(View.VISIBLE);
+    }
+    void pareggia(){
+        Toast.makeText(this, "PAREGGIO", Toast.LENGTH_LONG).show();
+        btnReset.setVisibility(View.VISIBLE);
     }
     void bloccaPulsanti(){
        /* POSSIBILITA' 1
@@ -116,6 +143,9 @@ public class TrisActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             int x, y;
+            int x_1, y_1;
+            Random rnd = new Random();
+
             boolean vittoria;
             // 1. rintracciare pulsante chiamante
             Button bL = (Button) v;
@@ -124,25 +154,47 @@ public class TrisActivity extends AppCompatActivity {
             x = Integer.parseInt(bL.getTransitionName().split("_")[1]);
             y = Integer.parseInt(bL.getTransitionName().split("_")[2]);
 
+            m[x][y] = 1;
+            g1 = false;
+            bL.setBackgroundResource(R.color.colorBlu);
+            bL.setEnabled(false); // disabilitiamo il click del pulsante
+            cont--;
+            if (!controllaVittoria(g1, x, y)){
+                if(cont == 0){
+                    pareggia();
+                }else{
+                    do{
+                        x_1 = rnd.nextInt(3);
+                        y_1 = rnd.nextInt(3);
+                    }while(m[x_1][y_1] != 0);
+                    m[x_1][y_1] = 2;
+                    cont--;
+                    g1 = true;
+                    b[x_1][y_1].setBackgroundResource(R.color.colorArancio);
+                    b[x_1][y_1].setEnabled(false);
+                    if(!controllaVittoria(g1, x_1, y_1)){
+                        if(cont == 0){
+                            pareggia();
+                        }
+                    }
+                }
+            }
+            /*
             if(g1){
-                m[x][y] = 1;
-                g1 = false;
-                bL.setBackgroundResource(R.color.colorBlu);
             }else{
                 m[x][y] = 2;
                 g1 = true;
                 bL.setBackgroundResource(R.color.colorArancio);
             }
-            bL.setEnabled(false); // disabilitiamo il click del pulsante
-
-
+            */
             // stampo matrice
             for(int i=0; i<3; i++){
                 Log.d("", String.valueOf(m[i][0]) + " " + String.valueOf(m[i][1]) + " " + String.valueOf(m[i][2]));
             }
             // -------
-
-            vittoria = false;
+        }
+        private boolean controllaVittoria(boolean g1, int x, int y){
+            boolean vittoria = false;
             // Controllo Vittoria
 
             // VERTICALE
@@ -175,6 +227,7 @@ public class TrisActivity extends AppCompatActivity {
                 }
                 bloccaPulsanti();
             }
+            return vittoria;
         }
     }
 }

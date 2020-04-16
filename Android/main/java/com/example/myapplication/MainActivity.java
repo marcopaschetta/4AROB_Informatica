@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private TextView txtSaluta;
     private Button btnSaluta, btnAltobasso, btnAccelerometro, btnFotocamera;
-    private Button btnGiocoTris;
+    private Button btnGiocoTris, btnGiocoForza4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         btnAccelerometro = findViewById(R.id.btnAccel);
         btnFotocamera = findViewById(R.id.btnFoto);
         btnGiocoTris = findViewById(R.id.btnTris);
+        btnGiocoForza4 = findViewById(R.id.btnForza4);
     }
     private void setupEventListener(){
         btnSaluta.setOnClickListener(new View.OnClickListener() {
@@ -67,7 +68,16 @@ public class MainActivity extends AppCompatActivity {
                 Intent intenzione;
                 intenzione = new Intent(MainActivity.this, TrisActivity.class);
                 intenzione.putExtra("g1", "Marco");
-                intenzione.putExtra("g2", "Luca");
+                intenzione.putExtra("g2", "Computer");
+                startActivity(intenzione);
+            }
+        });
+        btnGiocoForza4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intenzione;
+                intenzione = new Intent(MainActivity.this, Forza4Activity.class);
+
                 startActivity(intenzione);
             }
         });

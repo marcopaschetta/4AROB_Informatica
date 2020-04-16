@@ -31,7 +31,7 @@
             android:background="@color/colorRosso"
             android:text="@string/btn_reset"
             android:textColor="@color/colorBianco"
-            android:textSize="25dp"
+            android:textSize="25sp"
             android:visibility="gone"
             tools:text="@string/btn_reset" />
 

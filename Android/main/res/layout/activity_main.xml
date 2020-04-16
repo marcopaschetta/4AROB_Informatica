@@ -80,6 +80,15 @@
                 android:textColor="@color/colorRosso"
                 android:textSize="38dp"
                 />
+            <Button
+                android:id="@+id/btnForza4"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="@string/forza4"
+                android:background="@color/colorArancio"
+                android:textColor="@color/colorRosso"
+                android:textSize="38dp"
+                />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
